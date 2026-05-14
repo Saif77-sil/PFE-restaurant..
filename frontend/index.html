@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shoko Lounge · Manager</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg-stage" id="bgStage"></div>
+<div class="bg-veil"></div>
+
+<!-- LOGIN -->
+
+<div class="login-screen" id="loginScreen">
+
+  <div class="login-card">
+
+    <div class="logo">
+      <h1>SHOKO</h1>
+      <div class="logo-dec">
+        Lounge & Bar · Rabat
+      </div>
+    </div>
+
+    <div class="input-group">
+      <i class="fa-regular fa-user"></i>
+
+      <input
+      type="text"
+      id="loginUser"
+      placeholder="Identifiant">
+    </div>
+
+    <div class="input-group">
+
+      <i class="fa-solid fa-lock"></i>
+
+      <input
+      type="password"
+      id="loginPass"
+      placeholder="Mot de passe">
+
+    </div>
+
+    <button class="login-btn" onclick="enterApp()">
+      Connexion
+    </button>
+
+  </div>
+
+</div>
+
+<!-- APP -->
+
+<div class="app hidden" id="app">
+
+<header>
+
+  <div class="header-title">
+    <h2>Restaurant Tables</h2>
+    <p>Gestion · Shoko Lounge</p>
+  </div>
+
+  <div class="profile-mini">
+    <i class="fa-solid fa-user"></i>
+  </div>
+
+</header>
+
+<!-- TABLES PAGE -->
+
+<div id="tablesPage">
+
+  <div class="filters" id="filters">
+
+    <button class="active" data-filter="all">
+      Toutes
+    </button>
+
+    <button data-filter="free">
+      Libres
+    </button>
+
+    <button data-filter="busy">
+      Occupées
+    </button>
+
+    <button data-filter="rsv">
+      Réservées
+    </button>
+
+  </div>
+
+  <div class="stat-row" id="statRow"></div>
+
+  <div class="tables-grid" id="tablesGrid"></div>
+
+</div>
+
+<!-- ORDERS PAGE -->
+
+<div id="ordersPage" class="hidden page-box">
+
+  <h2>Commandes</h2>
+
+  <div id="ordersList"></div>
+
+</div>
+
+<!-- HISTORY PAGE -->
+
+<div id="historyPage" class="hidden page-box">
+
+  <h2>Historique</h2>
+
+  <p>Aucune commande terminée.</p>
+
+</div>
+
+<!-- PROFILE PAGE -->
+
+<div id="profilePage" class="hidden page-box">
+
+  <h2>Profil</h2>
+
+  <p>Administrateur SHOKO</p>
+
+</div>
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+
+  <div class="nav-item active" data-page="tablesPage">
+    <i class="fa-solid fa-border-all"></i>
+    <span>Tables</span>
+  </div>
+
+  <div class="nav-item" data-page="ordersPage">
+    <i class="fa-solid fa-receipt"></i>
+    <span>Commandes</span>
+  </div>
+
+  <div class="nav-item" data-page="historyPage">
+    <i class="fa-regular fa-clock"></i>
+    <span>Historique</span>
+  </div>
+
+  <div class="nav-item" data-page="profilePage">
+    <i class="fa-regular fa-user"></i>
+    <span>Profil</span>
+  </div>
+
+</div>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <div>
+
+        <h2 id="tableTitle">
+          Table 01
+        </h2>
+
+        <p>
+          Sélectionner des articles
+        </p>
+
+      </div>
+
+      <button class="modal-close" onclick="closeModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <div class="products">
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?q=80&w=300">
+
+        <div class="prod-info">
+          <h3>Sashimi Premium</h3>
+          <p>180 DH</p>
+        </div>
+
+        <button class="prod-add">
+          +
+        </button>
+
+      </div>
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?q=80&w=300">
+
+        <div class="prod-info">
+          <h3>Dragon Roll</h3>
+          <p>160 DH</p>
+        </div>
+
+        <button class="prod-add">
+          +
+        </button>
+
+      </div>
+
+      <div class="product">
+
+        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=300">
+
+        <div class="prod-info">
+          <h3>California Roll</h3>
+          <p>140 DH</p>
+        </div>
+
+        <button class="prod-add">
+          +
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+      <div>
+
+        <div>Total</div>
+
+        <div class="total-amt">
+          0 DH
+        </div>
+
+      </div>
+
+      <button class="confirm-btn">
+        Confirmer
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
