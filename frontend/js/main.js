@@ -1,5 +1,3 @@
-/* IMAGES */
-
 const SHOKO_IMG1 =
 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2f/e2/51/bd/la-mise-en-place-est.jpg?w=1200&h=800&s=1';
 
@@ -11,8 +9,6 @@ const SHOKO_IMG3 =
 
 const SHOKO_IMG4 =
 'https://images.otstatic.com/prod1/49700561/3/huge.jpg';
-
-/* BACKGROUND */
 
 const bgPhotos = [
   SHOKO_IMG1,
@@ -50,8 +46,6 @@ setInterval(()=>{
   slides[cur].classList.add('active');
 
 },5000);
-
-/* TABLES */
 
 const tables = [];
 
@@ -200,8 +194,6 @@ document
 
 });
 
-/* LOGIN */
-
 function enterApp(){
 
   const u =
@@ -227,8 +219,6 @@ function enterApp(){
   }
 
 }
-
-/* MODAL */
 
 let total = 0;
 
@@ -276,8 +266,6 @@ document
 
 });
 
-/* PRODUCTS */
-
 document
 .querySelectorAll('.prod-add')
 .forEach(btn=>{
@@ -313,8 +301,6 @@ document
   });
 
 });
-
-/* NAVIGATION */
 
 const navItems =
 document.querySelectorAll('.nav-item');
