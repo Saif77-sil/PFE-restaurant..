@@ -1,254 +1,439 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Shoko Lounge · Manager</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHOKO — Fine Dining & Lounge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/css/app.css" />
 </head>
-
 <body>
 
-<div class="bg-stage" id="bgStage"></div>
-<div class="bg-veil"></div>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--  PAGE: HOME  (id="page-home")                   -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="page-home">
 
-<div class="login-screen" id="loginScreen">
-
-  <div class="login-card">
-
-    <div class="logo">
-      <h1>SHOKO</h1>
-      <div class="logo-dec">
-        Lounge · kénitra
-      </div>
-    </div>
-
-    <div class="input-group">
-      <i class="fa-regular fa-user"></i>
-
-      <input
-      type="text"
-      id="loginUser"
-      placeholder="Identifiant">
-    </div>
-
-    <div class="input-group">
-
-      <i class="fa-solid fa-lock"></i>
-
-      <input
-      type="password"
-      id="loginPass"
-      placeholder="Mot de passe">
-
-    </div>
-
-    <button class="login-btn" onclick="enterApp()">
-      Connexion
-    </button>
-
-  </div>
-
-</div>
-
-<div class="app hidden" id="app">
-
-<header>
-
-  <div class="header-title">
-    <h2>Restaurant Tables</h2>
-    <p>Gestion · Shoko Lounge</p>
-  </div>
-
-  <div class="profile-mini">
-    <i class="fa-solid fa-user"></i>
-  </div>
-
-</header>
-
-<div id="tablesPage">
-
-  <div class="filters" id="filters">
-
-    <button class="active" data-filter="all">
-      Toutes
-    </button>
-
-    <button data-filter="free">
-      Libres
-    </button>
-
-    <button data-filter="busy">
-      Occupées
-    </button>
-
-    <button data-filter="rsv">
-      Réservées
-    </button>
-
-  </div>
-
-  <div class="stat-row" id="statRow"></div>
-
-  <div class="tables-grid" id="tablesGrid"></div>
-
-</div>
-
-<div id="ordersPage" class="hidden page-box">
-
-  <h2>Commandes</h2>
-
-  <div id="ordersList"></div>
-
-</div>
-
-<div id="historyPage" class="hidden page-box">
-
-  <h2>Historique</h2>
-
-  <p>Aucune commande terminée.</p>
-
-</div>
-
-<div id="profilePage" class="hidden page-box">
-
-  <h2>Profil</h2>
-
-  <p>Administrateur SHOKO</p>
-
-</div>
-
-<div class="bottom-nav">
-
-  <div class="nav-item active" data-page="tablesPage">
-    <i class="fa-solid fa-border-all"></i>
-    <span>Tables</span>
-  </div>
-
-  <div class="nav-item" data-page="ordersPage">
-    <i class="fa-solid fa-receipt"></i>
-    <span>Commandes</span>
-  </div>
-
-  <div class="nav-item" data-page="historyPage">
-    <i class="fa-regular fa-clock"></i>
-    <span>Historique</span>
-  </div>
-
-  <div class="nav-item" data-page="profilePage">
-    <i class="fa-regular fa-user"></i>
-    <span>Profil</span>
-  </div>
-
-</div>
-
-</div>
-
-<div class="modal" id="modal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-
-      <div>
-
-        <h2 id="tableTitle">
-          Table 01
-        </h2>
-
-        <p>
-          Sélectionner des articles
-        </p>
-
-      </div>
-
-      <button class="modal-close" onclick="closeModal()">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-    </div>
-
-    <div class="products">
-
-      <div class="product">
-
-        <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?q=80&w=300">
-
-        <div class="prod-info">
-          <h3>Sashimi Premium</h3>
-          <p>180 DH</p>
-        </div>
-
-        <button class="prod-add">
-          +
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <a href="#" class="navbar-logo" onclick="showPage('home');return false;">SHOKO<span>.</span></a>
+      <ul class="navbar-links">
+        <li><a href="#menu" onclick="scrollToSection('menu');return false;">Menu</a></li>
+        <li><a href="#gallery" onclick="scrollToSection('gallery');return false;">Galerie</a></li>
+        <li><a href="#reservation" onclick="scrollToSection('reservation');return false;">Réservation</a></li>
+        <li><a href="#contact" onclick="scrollToSection('contact');return false;">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span id="nav-auth-home"></span>
+        <a href="#reservation" class="navbar-cta" style="background:var(--ember);color:#fff;" onclick="scrollToSection('reservation');return false;">Réserver</a>
+        <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
         </button>
+      </div>
+    </nav>
 
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-close" onclick="toggleMobileMenu()">✕</button>
+      <a href="#menu" onclick="scrollToSection('menu');toggleMobileMenu();return false;">Menu</a>
+      <a href="#gallery" onclick="scrollToSection('gallery');toggleMobileMenu();return false;">Galerie</a>
+      <a href="#reservation" onclick="scrollToSection('reservation');toggleMobileMenu();return false;">Réservation</a>
+      <a href="#contact" onclick="scrollToSection('contact');toggleMobileMenu();return false;">Contact</a>
+      <a href="#" class="mobile-login-btn" onclick="showPage('login');toggleMobileMenu();return false;">Espace Staff</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-video-wrap">
+        <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1920&q=80">
+          <source src="https://cdn.pixabay.com/video/2023/06/26/169867-838545007_tiny.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-ambient"></div>
+
+      <div class="hero-content" id="hero-content">
+        <div class="hero-eyebrow reveal-item">
+          <div class="line"></div>
+          <span class="headline">Casablanca, Maroc — Est. 2019</span>
+          <div class="line"></div>
+        </div>
+        <h1 class="hero-title reveal-item" style="animation-delay:0.2s">SHO<em>K</em>O</h1>
+        <p class="hero-subtitle reveal-item" style="animation-delay:0.4s">Fine Dining &nbsp;•&nbsp; Cocktails &nbsp;•&nbsp; Music Experience</p>
+        <div class="hero-actions reveal-item" style="animation-delay:0.6s">
+          <a href="#reservation" class="btn btn-primary" onclick="scrollToSection('reservation');return false;">
+            Réserver une Table <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/></svg>
+          </a>
+          <a href="#menu" class="btn btn-outline" onclick="scrollToSection('menu');return false;">Explorer le Menu</a>
+        </div>
       </div>
 
-      <div class="product">
+      <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
 
-        <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?q=80&w=300">
+    <!-- MARQUEE STRIP -->
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marquee-track">
+        <!-- JS will fill this -->
+      </div>
+    </div>
 
-        <div class="prod-info">
-          <h3>Dragon Roll</h3>
-          <p>160 DH</p>
+    <!-- VIDEO SHOWCASE -->
+    <section class="video-showcase">
+      <div class="container">
+        <div class="section-eyebrow reveal-on-scroll">
+          <div style="width:40px;height:1px;background:var(--ember);opacity:.6;"></div>
+          <span class="headline">Expérience</span>
+        </div>
+        <div class="section-header reveal-on-scroll">
+          <h2>L'Art de la Nuit</h2>
+          <p class="body-text">Chaque soirée chez SHOKO est une mise en scène. De l'arrivée au dernier verre, une atmosphère sans compromis.</p>
+        </div>
+        <div class="video-showcase-grid">
+          <div class="video-card reveal-on-scroll">
+            <video autoplay muted loop playsinline>
+              <source src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg" type="video/mp4" />
+            </video>
+            <div class="video-card-overlay"><span class="video-card-label">Lounge &amp; DJ</span></div>
+          </div>
+          <div class="video-card reveal-on-scroll" style="animation-delay:.15s">
+            <video autoplay muted loop playsinline>
+              <source src="https://cdn.pixabay.com/video/2021/11/30/104701-649723601_tiny.mp4" type="video/mp4" />
+            </video>
+            <div class="video-card-overlay"><span class="video-card-label">Cocktail Bar</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section" id="gallery">
+      <div class="container" style="margin-bottom:40px;">
+        <div class="section-eyebrow reveal-on-scroll">
+          <div style="width:40px;height:1px;background:var(--ember);opacity:.6;"></div>
+          <span class="headline">Galerie</span>
+        </div>
+        <div class="section-header reveal-on-scroll">
+          <h2>Dans l'Atmosphère</h2>
+          <p class="body-text">Cocktails d'exception, cuisine asiatique fusion, espaces VIP intimistes. SHOKO, c'est une scène vivante chaque soir.</p>
+        </div>
+      </div>
+      <div style="overflow:hidden;">
+        <div class="gallery-track" id="gallery-track"></div>
+      </div>
+    </section>
+
+    <!-- NUMBERS STRIP -->
+    <section class="numbers-strip reveal-on-scroll">
+      <div class="numbers-grid">
+        <div class="number-cell"><div class="number-value" data-count="5" data-suffix="+">5+</div><div class="number-label">Années d'excellence</div></div>
+        <div class="number-cell"><div class="number-value" data-count="120" data-suffix="">120</div><div class="number-label">Places assises</div></div>
+        <div class="number-cell"><div class="number-value" data-count="80" data-suffix="+">80+</div><div class="number-label">Cocktails signature</div></div>
+        <div class="number-cell"><div class="number-value" data-count="4.9" data-suffix="">4.9</div><div class="number-label">Note moyenne</div></div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-eyebrow reveal-on-scroll">
+          <div style="width:40px;height:1px;background:var(--ember);opacity:.6;"></div>
+          <span class="headline">Menu</span>
+        </div>
+        <div class="section-header reveal-on-scroll">
+          <h2>Notre Carte</h2>
+          <p class="body-text">Une sélection méticuleuse où chaque plat raconte une histoire. Produits d'exception, techniques japonaises, influences méditerranéennes.</p>
+        </div>
+        <div class="menu-tabs" id="menu-tabs"></div>
+        <div class="menu-grid" id="menu-grid"></div>
+      </div>
+    </section>
+
+    <!-- RESERVATION -->
+    <section class="reservation-section" id="reservation">
+      <div class="container">
+        <div class="reservation-inner">
+          <div class="reservation-info reveal-on-scroll">
+            <div class="section-eyebrow" style="display:flex;align-items:center;gap:16px;margin-bottom:12px;">
+              <div style="width:40px;height:1px;background:var(--ember);opacity:.6;"></div>
+              <span class="headline">Réservation</span>
+            </div>
+            <h2>Vivez l'Expérience<br /><em style="font-style:italic;color:var(--ember-glow)">SHOKO</em></h2>
+            <p class="body-text" style="margin-bottom:32px;">Réservez votre table et laissez-nous créer une soirée sur mesure. Tables VIP disponibles sur demande.</p>
+            <div class="res-details">
+              <div class="res-detail-item">
+                <svg class="res-detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Marina Bay, Boulevard de la Corniche, Casablanca</span>
+              </div>
+              <div class="res-detail-item">
+                <svg class="res-detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                <span>Mar–Dim : 19h00 – 03h00</span>
+              </div>
+              <div class="res-detail-item">
+                <svg class="res-detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span>+212 522 000 000</span>
+              </div>
+            </div>
+          </div>
+          <div class="reveal-on-scroll" style="animation-delay:.1s">
+            <form class="reservation-form" id="reservation-form">
+              <div class="form-group">
+                <label class="form-label">Nom complet</label>
+                <input type="text" name="name" class="form-input" placeholder="Votre nom" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-input" placeholder="email@exemple.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Date</label>
+                <input type="date" name="date" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Heure</label>
+                <select name="time" class="form-select" required>
+                  <option value="">Choisir</option>
+                  <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option>
+                  <option>21:00</option><option>21:30</option><option>22:00</option><option>22:30</option><option>23:00</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nombre de personnes</label>
+                <select name="guests" class="form-select">
+                  <option value="1">1 personne</option><option value="2" selected>2 personnes</option>
+                  <option value="3">3 personnes</option><option value="4">4 personnes</option>
+                  <option value="5">5 personnes</option><option value="6">6 personnes</option>
+                  <option value="7">7 personnes</option><option value="8">8 personnes</option>
+                  <option value="10">10 personnes</option><option value="10+">10+ (Événement privé)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Occasion spéciale</label>
+                <select name="occasion" class="form-select">
+                  <option value="">Aucune</option><option>Anniversaire</option><option>Demande en mariage</option>
+                  <option>Repas d'affaires</option><option>Événement VIP</option><option>Célébration</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Demandes spéciales</label>
+                <textarea name="notes" class="form-textarea" placeholder="Allergies, préférences, décorations particulières…"></textarea>
+              </div>
+              <div class="form-submit">
+                <p>Confirmation par email sous 2h</p>
+                <button type="submit" class="btn btn-primary">Réserver ma Table →</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- TOAST -->
+      <div class="toast" id="toast">
+        <h4>Réservation envoyée ✦</h4>
+        <p>Nous confirmerons votre table par email dans les 2 heures.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">SHOKO<span>.</span></div>
+            <p>Une expérience de dining et lounge d'exception où la gastronomie, les cocktails créatifs et la musique live se fondent en une soirée inoubliable.</p>
+            <div class="footer-socials">
+              <a href="#" class="social-btn" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="#" class="social-btn" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="#" class="social-btn" aria-label="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#menu" onclick="scrollToSection('menu');return false;">Notre Menu</a></li>
+              <li><a href="#gallery" onclick="scrollToSection('gallery');return false;">Galerie</a></li>
+              <li><a href="#reservation" onclick="scrollToSection('reservation');return false;">Réservation</a></li>
+              <li><a href="#contact" onclick="scrollToSection('contact');return false;">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Horaires</h4>
+            <ul>
+              <li>Mardi — Jeudi: 19h — 01h</li>
+              <li>Vendredi: 19h — 03h</li>
+              <li>Samedi: 18h — 03h</li>
+              <li>Dimanche: 18h — 01h</li>
+              <li>Lundi: Fermé</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li>Marina Bay, Casablanca</li>
+              <li>+212 522 000 000</li>
+              <li><a href="mailto:hello@shoko.ma">hello@shoko.ma</a></li>
+              <li><a href="#">Dress code: Smart Casual</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© <span id="footer-year"></span> SHOKO Lounge. Tous droits réservés.</p>
+          <p>Design &amp; Dev — Casablanca, Maroc</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /#page-home -->
+
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--  PAGE: LOGIN  (id="page-login")                 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="page-login" style="display:none;">
+    <div class="login-page">
+      <div class="login-bg"></div>
+
+      <div class="login-card" id="login-card">
+        <div class="login-logo">
+          <h1>SHOKO<span>.</span></h1>
+          <p>Accès au dashboard</p>
+        </div>
+        <form class="login-form" id="login-form">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="login-email" class="form-input" placeholder="admin@shoko.ma" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mot de passe</label>
+            <div style="position:relative;">
+              <input type="password" id="login-password" class="form-input" placeholder="••••••••" required style="padding-right:48px;" />
+              <button type="button" id="toggle-pass" onclick="togglePassword()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:14px;">👁</button>
+            </div>
+          </div>
+          <div class="login-error" id="login-error" style="display:none;"></div>
+          <button type="submit" class="btn btn-primary" id="login-btn" style="width:100%;justify-content:center;">
+            Se connecter →
+          </button>
+        </form>
+
+        <div class="login-demo-credentials">
+          <p class="demo-title">Comptes de démonstration</p>
+          <div class="demo-grid" id="demo-grid"></div>
         </div>
 
-        <button class="prod-add">
-          +
-        </button>
-
+        <div class="login-footer">
+          <a href="#" style="color:var(--ember);text-decoration:none;font-size:.75rem;" onclick="showPage('home');return false;">← Retour au site</a>
+        </div>
       </div>
+    </div>
+  </div><!-- /#page-login -->
 
-      <div class="product">
 
-        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=300">
+  <!-- ═══════════════════════════════════════════════ -->
+  <!--  PAGE: DASHBOARD  (id="page-dashboard")         -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="page-dashboard" style="display:none;">
+    <div class="dashboard">
 
-        <div class="prod-info">
-          <h3>California Roll</h3>
-          <p>140 DH</p>
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+          <h2>SHOKO<span>.</span></h2>
+          <p id="sidebar-role-label">Dashboard</p>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-label">Navigation</div>
+          <div id="sidebar-nav"></div>
+        </div>
+        <div class="sidebar-section" style="margin-top:auto;">
+          <div class="sidebar-section-label">Système</div>
+          <button class="sidebar-item" onclick="setActivePage('settings')">
+             Paramètres
+          </button>
+          <button class="sidebar-item" onclick="dashLogout()">
+             Déconnexion
+          </button>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="sidebar-user">
+            <div class="user-avatar" id="user-avatar">👑</div>
+            <div class="user-info">
+              <p id="sidebar-username">Utilisateur</p>
+              <span id="sidebar-user-role">Admin</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="dashboard-main">
+        <div class="dashboard-header">
+          <div>
+            <h1 id="dash-title">Vue Générale</h1>
+            <p id="dash-subtitle">Tableau de bord en temps réel</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="search-bar">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="color:var(--text-muted)"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" placeholder="Rechercher..." />
+            </div>
+            <button class="notif-btn">
+              🔔 <span class="notif-dot"></span>
+            </button>
+          </div>
         </div>
 
-        <button class="prod-add">
-          +
-        </button>
-
-      </div>
+        <!-- Dynamic content area -->
+        <div id="dash-content" class="dash-fade-in"></div>
+      </main>
 
     </div>
 
-    <div class="modal-footer">
-
-      <div>
-
-        <div>Total</div>
-
-        <div class="total-amt">
-          0 DH
+    <!-- ORDER MODAL -->
+    <div class="modal-overlay" id="order-modal-overlay" onclick="closeOrderModal()" style="display:none;">
+      <div class="order-modal" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div>
+            <h2 id="order-modal-title">Table</h2>
+            <p class="modal-subtitle">Sélectionner des articles</p>
+          </div>
+          <button class="modal-close" onclick="closeOrderModal()">✕</button>
         </div>
-
+        <div class="menu-filters" id="modal-menu-filters"></div>
+        <div class="menu-list" id="modal-menu-list"></div>
+        <div class="modal-footer">
+          <div class="order-total">
+            <span>Total</span>
+            <strong id="cart-total-display">0 DH</strong>
+          </div>
+          <button class="confirm-order-btn" id="confirm-order-btn" onclick="confirmOrder()" disabled>
+            Confirmer la commande
+          </button>
+        </div>
       </div>
-
-      <button class="confirm-btn">
-        Confirmer
-      </button>
-
     </div>
 
-  </div>
+    <!-- RECEIPT MODAL -->
+    <div class="modal-overlay" id="receipt-modal-overlay" onclick="closeReceiptModal()" style="display:none;">
+      <div class="receipt-modal" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <h2 id="receipt-modal-title">🧾 Reçu Table</h2>
+          <button class="modal-close" onclick="closeReceiptModal()">✕</button>
+        </div>
+        <div id="receipt-content"></div>
+      </div>
+    </div>
 
-</div>
+  </div><!-- /#page-dashboard -->
 
-<script src="js/main.js"></script>
-
+  <script src="src/js/main.js"></script>
 </body>
 </html>
